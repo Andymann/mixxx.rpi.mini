@@ -4,6 +4,8 @@ import sys
 import rtmidi
 import time
 
+from subprocess import call
+
 sButton = ''
 iButton = 0
 iEnc = 0
@@ -23,6 +25,7 @@ BUTTON_6 = 256
 BUTTON_7 = 128
 BUTTON_8 = 64
 BUTTON_ENC = 32
+TOP_ROW = 15360
 
 SHIFT_BUTTON_2 = 12288
 SHIFT_BUTTON_3 = 10240
@@ -74,6 +77,7 @@ while True:
     if iButton != iLastButton:
         if iButton == 0:
             # release button
+
             if (iLastButton == BUTTON_1):
                 midiout.send_message([NOTE_OFF, 61, 0])
             elif (iLastButton == BUTTON_2):
@@ -130,6 +134,9 @@ while True:
             midiout.send_message([NOTE_ON, 68, 127])
         elif (iButton == BUTTON_ENC):
             midiout.send_message([NOTE_ON, 69, 127])
+        elif(iButton == TOP_ROW):
+            call("sudo nohup shutdown -h now", shell=True)
+            # print('reboot')
         # elif (iButton == SHIFT_BUTTON_1):
         #    midiout.send_message([NOTE_ON, 70, 127])
         elif (iButton == SHIFT_BUTTON_2):
