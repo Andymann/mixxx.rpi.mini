@@ -5,7 +5,7 @@
     </info>
     <controller id="FrontPanel">
         <scriptfiles>
-            <file filename="m.js" functionprefix="MyController"/>
+            <file filename="frontpanel.js" functionprefix="MyController"/>
         </scriptfiles>
         <controls>
 		<!--
